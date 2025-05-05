@@ -53,11 +53,15 @@ public class Main {
 
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
         String nextItem = scanner.nextLine();
-        while (!nextItem.isEmpty()) {
-            constructorDishes.add(nextItem);
-            nextItem = scanner.nextLine();
+        if (!dinnerConstructor.checkType(nextItem)) {
+            System.out.println("Такого типа блюда нет.");
+            System.out.println(" ");
+        } else {
+            while (!nextItem.isEmpty()) {
+                constructorDishes.add(nextItem);
+                nextItem = scanner.nextLine();
+            }
+            dinnerConstructor.getComboDishes(constructorDishes, numberOfCombos);
         }
-
-        dinnerConstructor.getComboDishes(constructorDishes, numberOfCombos);
     }
 }
